@@ -59,9 +59,9 @@ const Attendance: React.FC<Attendance> = ({navigation}) => {
       return;
     }
     const formatedDate = `${currentMonth} ${currentNewDate}, ${currentYear}`;
-    setShownDate(formatedDate);
-    Platform.OS === 'ios' ? setDate(currentDate) : null;
     setShowCalender(false);
+    setShownDate(formatedDate);
+    setDate(currentDate);
   };
 
   const onCancel = () => {
@@ -70,8 +70,8 @@ const Attendance: React.FC<Attendance> = ({navigation}) => {
         .toDateString()
         .slice(4, 7)} ${new Date().getDate()}, ${new Date().getFullYear()}`,
     );
-    Platform.OS === 'ios' ? setDate(new Date().toDateString()) : null;
     setShowCalender(false);
+    Platform.OS === 'ios' && setDate(new Date().toDateString());
   };
 
   const renderItem = ({item}: {item: AttendanceData}) => {
